@@ -420,14 +420,14 @@ public class CheckerSolver2 {
     }
 }
 
-class Piece {
-    int x;
-    int y;
-    char type;
-
-    public Piece(int x, int y, char type) {
-        this.x = x;
-        this.y = y;
-        this.type = type;
-    }
-}
+//class Piece {
+//    int x;
+//    int y;
+//    char type;
+//
+//    public Piece(int x, int y, char type) {
+//        this.x = x;
+//        this.y = y;
+//        this.type = type;
+//    }
+//}
