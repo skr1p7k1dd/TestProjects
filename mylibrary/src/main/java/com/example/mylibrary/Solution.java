@@ -15,8 +15,8 @@ public class Solution {
     static ArrayList<Piece> allPieces = null;
     static Piece ourPiece = null;
 
-//    static boolean DEBUG_MODE = true;
-    static boolean DEBUG_MODE = false;
+    static boolean DEBUG_MODE = true;
+//    static boolean DEBUG_MODE = false;
 
     public static void main(String[] args) {
 
@@ -158,6 +158,26 @@ public class Solution {
             System.out.println("Custom 15: " + answer15 + " and it should be: " + expectedAnswer15);
         }
 
+        int[] X16    = {2,3,4,5,5,6,6,7,8,9};
+        int[] Y16    = {6,5,4,7,9,6,8,5,8,9};
+        String T16   = "Xpppppppppppppppppppppppppppppppppp";
+        int answer16 = solution(X16, Y16, T16);
+        int expectedAnswer16 = 1;
+        if (answer16 != expectedAnswer16) {
+            System.out.println("Custom 16: " + answer16 + " and it should be: " + expectedAnswer16);
+        }
+
+        int[] X17    = {4,5,7,9};
+        int[] Y17    = {0,1,3,5};
+        String T17   = "Xpppppppppppppppppppppppppppppppppp";
+        int answer17 = solution(X17, Y17, T17);
+        int expectedAnswer17 = 3;
+        if (answer17 != expectedAnswer17) {
+            System.out.println("Custom 17: " + answer17 + " and it should be: " + expectedAnswer17);
+        } else {
+            System.out.println("PASS!!!!");
+        }
+
         System.out.println("ALL TESTS FINISHED");
     }
 
@@ -243,6 +263,7 @@ public class Solution {
                     }
                 }
             }
+            //
             else if ((ourPiece.x - piece.x) == (piece.y - ourPiece.y)) {
                 if (piece.x < ourPiece.x) {
                     if (firstLeftPiece == null) {
@@ -344,7 +365,7 @@ public class Solution {
             a = end;
             b = start;
         }
-//        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
+        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
 
         if (b.isToTheRightOf(a)) {
             if (b.y - a.y != b.x - a.x) {
@@ -353,9 +374,12 @@ public class Solution {
             }
 
             for (int xi = 1; xi < b.x - a.x; xi++) {
-                //DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi));
+
                 if (allPiecesHashMap.get(getHashForPosition(a.x + xi, a.y + xi)) != null) {
+                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " OBSTRUCTION");
                     return true;
+                } else {
+                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " clear");
                 }
             }
         } else {
@@ -366,9 +390,12 @@ public class Solution {
             }
 
             for (int xi = 1; xi < a.x - b.x; xi++) {
-                //DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi));
+
                 if (allPiecesHashMap.get(getHashForPosition(a.x - xi, a.y + xi)) != null) {
+                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " OBSTRUCTON");
                     return true;
+                } else {
+                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " clear");
                 }
             }
         }
@@ -501,12 +528,14 @@ class Piece {
         int maxPathValue = 0;
         //Enumerate candidates to find the max path value
         for(Piece candidate : pathCandidates) {
-            //add THIS path value here
-            int candidateMaxPathValue = candidate.getMaxPathValue(!goingLeft);
-            if (goingLeft) {
-                Solution.DebugPrint("  Candidate " + candidate.getGridPoint().desc() + " has max val: " + candidateMaxPathValue + " from left");
+
+            //If the path curved, switch sides when calculating sub max path value
+            int candidateMaxPathValue = 0;
+            GridPoint halfWayPt = candidate.getGridPoint();
+            if (halfWayPt.isEqualTo(candidate.getGridPoint())) {
+                candidateMaxPathValue = candidate.getMaxPathValue(goingLeft);
             } else {
-                Solution.DebugPrint("  Candidate " + candidate.getGridPoint().desc() + " has max val: " + candidateMaxPathValue + " from right");
+                candidateMaxPathValue = candidate.getMaxPathValue(!goingLeft);
             }
 
             if (candidateMaxPathValue > maxPathValue) {
