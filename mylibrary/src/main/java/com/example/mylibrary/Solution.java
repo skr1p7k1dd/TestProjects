@@ -193,6 +193,15 @@ public class Solution {
             System.out.println("Custom 19: " + answer19 + " and it should be: " + expectedAnswer19);
         }
 
+        int[] X20    = {4,1,2,2,3,5,5,5,5,6,6,7,8,7,10,11};
+        int[] Y20    = {0,7,6,2,1,1,3,7,9,6,8,3,4,9,10,11};
+        String T20   = "Xqppppppppppppppppppppppppppp";
+        int answer20 = solution(X20, Y20, T20);
+        int expectedAnswer20 = 4;
+        if (answer20 != expectedAnswer20) {
+            System.out.println("Custom 20: " + answer20 + " and it should be: " + expectedAnswer20);
+        }
+
         System.out.println("ALL TESTS FINISHED");
     }
 
@@ -380,11 +389,11 @@ public class Solution {
             a = end;
             b = start;
         }
-        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
+//        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
 
         if (b.isToTheRightOf(a)) {
             if (b.y - a.y != b.x - a.x) {
-                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-a. No path between " + a.desc() + " and " + b.desc());
+//                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-a. No path between " + a.desc() + " and " + b.desc());
                 return false;
             }
 
@@ -392,16 +401,16 @@ public class Solution {
 
                 Piece possibleExistingPiece = allPiecesHashMap.get(getHashForPosition(a.x + xi, a.y + xi));
                 if (possibleExistingPiece != null && possibleExistingPiece != pieceToIgnore) {
-                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " OBSTRUCTION");
+//                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " OBSTRUCTION");
                     return true;
                 } else {
-                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " clear");
+//                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " clear");
                 }
             }
         } else {
 
             if (b.y - a.y != a.x - b.x) {
-                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-b. No path between " + a.desc() + " and " + b.desc());
+//                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-b. No path between " + a.desc() + " and " + b.desc());
                 return false;
             }
 
@@ -409,10 +418,10 @@ public class Solution {
 
                 Piece possibleExistingPiece = allPiecesHashMap.get(getHashForPosition(a.x - xi, a.y + xi));
                 if (possibleExistingPiece != null && possibleExistingPiece != pieceToIgnore) {
-                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " OBSTRUCTON");
+//                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " OBSTRUCTON");
                     return true;
                 } else {
-                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " clear");
+//                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " clear");
                 }
             }
         }
@@ -460,7 +469,7 @@ class Piece {
     public int getMaxPathValue(final boolean goingLeft) {
 
 
-//        if (this.x == 3 && this.y == 3) {
+//        if (this.x == 5 && this.y == 3) {
 //            System.out.println();
 //        }
 
@@ -559,9 +568,9 @@ class Piece {
         for(Piece candidate : pathCandidates) {
 
             //If the path curved, switch sides when calculating sub max path value
-            int candidateMaxPathValue = 0;
-            GridPoint halfWayPt = candidate.getGridPoint();
-            if (halfWayPt.isEqualTo(candidate.getGridPoint())) {
+            int candidateMaxPathValue;
+            GridPoint halfWayPt = this.getPathHalfwayPoint(candidate, goingLeft);
+            if (halfWayPt.isEqualTo(candidate.getGridPoint()) || halfWayPt.isEqualTo(this.getGridPoint())) {
                 candidateMaxPathValue = candidate.getMaxPathValue(goingLeft);
             } else {
                 candidateMaxPathValue = candidate.getMaxPathValue(!goingLeft);
