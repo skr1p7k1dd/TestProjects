@@ -139,7 +139,6 @@ public class Solution {
             System.out.println("Custom 13: " + answer13 + " and it should be: " + expectedAnswer13);
         }
 
-
         int[] X14    = {5,4,3,3,2,0,2};
         int[] Y14    = {5,2,3,5,4,0,6};
         String T14   = "pppqpXp";
@@ -183,8 +182,15 @@ public class Solution {
         int expectedAnswer18 = 5;
         if (answer18 != expectedAnswer18) {
             System.out.println("Custom 18: " + answer18 + " and it should be: " + expectedAnswer18);
-        } else {
-            System.out.println("Pass");
+        }
+
+        int[] X19    = {4,4,5,7,9,9,9,7};
+        int[] Y19    = {0,10,1,3,5,7,9,11};
+        String T19   = "Xqppppppppppppp";
+        int answer19 = solution(X19, Y19, T19);
+        int expectedAnswer19 = 5;
+        if (answer19 != expectedAnswer19) {
+            System.out.println("Custom 19: " + answer19 + " and it should be: " + expectedAnswer19);
         }
 
         System.out.println("ALL TESTS FINISHED");
@@ -366,7 +372,7 @@ public class Solution {
         return rList;
     }
 
-    public static boolean PieceObstructsPath(GridPoint start, GridPoint end) {
+    public static boolean PieceObstructsPath(GridPoint start, GridPoint end, Piece pieceToIgnore) {
 
         GridPoint a = start;
         GridPoint b = end;
@@ -382,9 +388,10 @@ public class Solution {
                 return false;
             }
 
-            for (int xi = 1; xi < b.x - a.x; xi++) {
+            for (int xi = 1; xi <= b.x - a.x; xi++) {
 
-                if (allPiecesHashMap.get(getHashForPosition(a.x + xi, a.y + xi)) != null) {
+                Piece possibleExistingPiece = allPiecesHashMap.get(getHashForPosition(a.x + xi, a.y + xi));
+                if (possibleExistingPiece != null && possibleExistingPiece != pieceToIgnore) {
                     DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " OBSTRUCTION");
                     return true;
                 } else {
@@ -398,9 +405,10 @@ public class Solution {
                 return false;
             }
 
-            for (int xi = 1; xi < a.x - b.x; xi++) {
+            for (int xi = 1; xi <= a.x - b.x; xi++) {
 
-                if (allPiecesHashMap.get(getHashForPosition(a.x - xi, a.y + xi)) != null) {
+                Piece possibleExistingPiece = allPiecesHashMap.get(getHashForPosition(a.x - xi, a.y + xi));
+                if (possibleExistingPiece != null && possibleExistingPiece != pieceToIgnore) {
                     DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " OBSTRUCTON");
                     return true;
                 } else {
@@ -470,6 +478,11 @@ class Piece {
 
                 if (goingLeft) {
 
+                    //Check to make sure this piece isn't blocked on this side
+                    if (Piece.this.pieceExistsBehindLeft()) {
+                        return true;
+                    }
+
                     GridPoint halfWayPoint = Piece.this.getPathHalfwayPoint(otherPiece, true);
 
                     if (halfWayPoint == null) {
@@ -489,15 +502,10 @@ class Piece {
                     }
 
                     //Check for obstructions on the way
-                    if (Solution.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint)) {
+                    if (Solution.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint, otherPiece)) {
                         return true;
                     }
-                    if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
-                        return true;
-                    }
-
-                    //Check to make sure its not immediately adjacent to this piece
-                    if (Piece.this.isImmediatelyAdjacentTo(otherPiece)) {
+                    if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint(), otherPiece)) {
                         return true;
                     }
 
@@ -505,6 +513,11 @@ class Piece {
                     return false;
 
                 } else {
+
+                    //Check to make sure this piece isn't blocked on this side
+                    if (Piece.this.pieceExistsBehindRight()) {
+                        return true;
+                    }
 
                     GridPoint halfWayPoint = Piece.this.getPathHalfwayPoint(otherPiece, false);
 
@@ -524,16 +537,11 @@ class Piece {
                         }
                     }
 
-                    //Check for obstructions on the way
-                    if (Solution.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint)) {
+                    //Check for obstructions on the way. Pieces cant obstruct themselves
+                    if (Solution.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint, otherPiece)) {
                         return true;
                     }
-                    if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
-                        return true;
-                    }
-
-                    //Check to make sure its not immediately adjacent to this piece
-                    if (Piece.this.isImmediatelyAdjacentTo(otherPiece)) {
+                    if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint(), otherPiece)) {
                         return true;
                     }
 
@@ -627,14 +635,14 @@ class Piece {
         return true;
     }
 
-    public boolean isImmediatelyAdjacentTo(Piece otherPiece) {
-        if (this.y + 1 == otherPiece.y || this.y - 1 == otherPiece.y) {
-            if (this.x - 1 == otherPiece.x || this.x + 1 == otherPiece.x) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public boolean isImmediatelyAdjacentTo(Piece otherPiece) {
+//        if (this.y + 1 == otherPiece.y || this.y - 1 == otherPiece.y) {
+//            if (this.x - 1 == otherPiece.x || this.x + 1 == otherPiece.x) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public GridPoint getGridPoint() {
         return new GridPoint(x, y);
