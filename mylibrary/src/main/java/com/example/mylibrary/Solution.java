@@ -1,17 +1,15 @@
 package com.example.mylibrary;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
  * Created by Alex on 10/23/2017.
  */
 
-public class CheckerSolver3 {
+public class Solution {
 
     static HashMap<String, Piece> allPiecesHashMap = null;
     static ArrayList<Piece> allPieces = null;
@@ -27,7 +25,7 @@ public class CheckerSolver3 {
         int[] X1    = {3, 5, 1, 6};
         int[] Y1    = {1, 3, 3, 8};
         String T1   = "Xpqp";
-        int answer1 = Solve(X1, Y1, T1);
+        int answer1 = solution(X1, Y1, T1);
         int expectedAnswer1 = 10;
         if (answer1 != expectedAnswer1) {
             System.out.println("ANSWER 1 IS: " + answer1 + " and it should be: " + expectedAnswer1);
@@ -36,7 +34,7 @@ public class CheckerSolver3 {
         int[] X2    = {0, 3, 5, 1, 6};
         int[] Y2    = {4, 1, 3, 3, 8};
         String T2   = "pXpqp";
-        int answer2 = Solve(X2, Y2, T2);
+        int answer2 = solution(X2, Y2, T2);
         int expectedAnswer2 = 2;
         if (answer2 != expectedAnswer2) {
             System.out.println("ANSWER 2 IS: " + answer2 + " and it should be: " + expectedAnswer2);
@@ -45,7 +43,7 @@ public class CheckerSolver3 {
         int[] X3    = {0, 6, 2, 5, 3, 0};
         int[] Y3    = {4, 8, 2, 3, 1, 6};
         String T3   = "ppqpXp";
-        int answer3 = Solve(X3, Y3, T3);
+        int answer3 = solution(X3, Y3, T3);
         int expectedAnswer3 = 12;
         if (answer3 != expectedAnswer3) {
             System.out.println("ANSWER 3 IS: " + answer3 + " and it should be: " + expectedAnswer3);
@@ -54,7 +52,7 @@ public class CheckerSolver3 {
         int[] X4    = {0, 1};
         int[] Y4    = {0, 1};
         String T4   = "Xp";
-        int answer4 = Solve(X4, Y4, T4);
+        int answer4 = solution(X4, Y4, T4);
         int expectedAnswer4 = 1;
         if (answer4 != expectedAnswer4) {
             System.out.println("Custom 4: " + answer4 + " and it should be: " + expectedAnswer4);
@@ -63,7 +61,7 @@ public class CheckerSolver3 {
         int[] X5    = {0, 1, 2};
         int[] Y5    = {0, 1, 2};
         String T5   = "Xpp";
-        int answer5 =  Solve(X5, Y5, T5);
+        int answer5 =  solution(X5, Y5, T5);
         int expectedAnswer5 = 0;
         if (answer5 != expectedAnswer5) {
             System.out.println("Custom 5: " + answer5 + " and it should be: " + expectedAnswer5);
@@ -72,7 +70,7 @@ public class CheckerSolver3 {
         int[] X6    = {0, 1, 3};
         int[] Y6    = {0, 1, 3};
         String T6   = "Xpp";
-        int answer6 = Solve(X6, Y6, T6);
+        int answer6 = solution(X6, Y6, T6);
         int expectedAnswer6 = 2;
         if (answer6 != expectedAnswer6) {
             System.out.println("Custom 6: " + answer6 + " and it should be: " + expectedAnswer6);
@@ -81,7 +79,7 @@ public class CheckerSolver3 {
         int[] X7    = {0, 1, 3, 4};
         int[] Y7    = {0, 1, 3, 4};
         String T7   = "Xppp";
-        int answer7 = Solve(X7, Y7, T7);
+        int answer7 = solution(X7, Y7, T7);
         int expectedAnswer7 = 1;
         if (answer7 != expectedAnswer7) {
             System.out.println("Custom 7: " + answer7 + " and it should be: " + expectedAnswer7);
@@ -90,7 +88,7 @@ public class CheckerSolver3 {
         int[] X8    = {0, 1, 3, 4, 0};
         int[] Y8    = {0, 1, 3, 4, 4};
         String T8   = "Xpppq";
-        int answer8 = Solve(X8, Y8, T8);
+        int answer8 = solution(X8, Y8, T8);
         int expectedAnswer8 = 11;
         if (answer8 != expectedAnswer8) {
             System.out.println("Custom 8: " + answer8 + " and it should be: " + expectedAnswer8);
@@ -99,7 +97,7 @@ public class CheckerSolver3 {
         int[] X9    = {0, 1, 3, 4, 0};
         int[] Y9    = {0, 1, 3, 4, 10};
         String T9   = "Xpppq";
-        int answer9 = Solve(X9, Y9, T9);
+        int answer9 = solution(X9, Y9, T9);
         int expectedAnswer9 = 1;
         if (answer9 != expectedAnswer9) {
             System.out.println("Custom 9: " + answer9 + " and it should be: " + expectedAnswer9);
@@ -108,7 +106,7 @@ public class CheckerSolver3 {
         int[] X10    = {0, 1, 3, 0};
         int[] Y10    = {0, 1, 3, 10};
         String T10   = "Xppq";
-        int answer10 = Solve(X10, Y10, T10);
+        int answer10 = solution(X10, Y10, T10);
         int expectedAnswer10 = 12;
         if (answer10 != expectedAnswer10) {
             System.out.println("Custom 10: " + answer10 + " and it should be: " + expectedAnswer10);
@@ -117,7 +115,7 @@ public class CheckerSolver3 {
         int[] X11    = {0, 1, 3, 1};
         int[] Y11    = {0, 1, 3, 10};
         String T11   = "Xppq";
-        int answer11 = Solve(X11, Y11, T11);
+        int answer11 = solution(X11, Y11, T11);
         int expectedAnswer11 = 2;
         if (answer11 != expectedAnswer11) {
             System.out.println("Custom 11: " + answer11 + " and it should be: " + expectedAnswer11);
@@ -126,7 +124,7 @@ public class CheckerSolver3 {
         int[] X12    = {0, 1, 2, 1};
         int[] Y12    = {0, 1, 2, 10};
         String T12   = "Xppq";
-        int answer12 = Solve(X12, Y12, T12);
+        int answer12 = solution(X12, Y12, T12);
         int expectedAnswer12 = 0;
         if (answer12 != expectedAnswer12) {
             System.out.println("Custom 12: " + answer12 + " and it should be: " + expectedAnswer12);
@@ -135,16 +133,35 @@ public class CheckerSolver3 {
         int[] X13    = {10, 12};
         int[] Y13    = {10, 10};
         String T13   = "Xp";
-        int answer13 = Solve(X13, Y13, T13);
+        int answer13 = solution(X13, Y13, T13);
         int expectedAnswer13 = 0;
         if (answer13 != expectedAnswer13) {
             System.out.println("Custom 13: " + answer13 + " and it should be: " + expectedAnswer13);
         }
 
+
+        int[] X14    = {5,4,3,3,2,0,2};
+        int[] Y14    = {5,2,3,5,4,0,6};
+        String T14   = "pppqpXp";
+        int answer14 = solution(X14, Y14, T14);
+        int expectedAnswer14 = 2;
+        if (answer14 != expectedAnswer14) {
+            System.out.println("Custom 14: " + answer14 + " and it should be: " + expectedAnswer14);
+        }
+
+        int[] X15    = {5,4,3,3,2,0};
+        int[] Y15    = {5,2,3,5,4,0};
+        String T15   = "pppqpXp";
+        int answer15 = solution(X15, Y15, T15);
+        int expectedAnswer15 = 11;
+        if (answer15 != expectedAnswer15) {
+            System.out.println("Custom 15: " + answer15 + " and it should be: " + expectedAnswer15);
+        }
+
         System.out.println("ALL TESTS FINISHED");
     }
 
-    public static int Solve(int[] x, int[] y, String T) {
+    public static int solution(int[] x, int[] y, String T) {
 
         /////////////////////////////
         /////BEGIN INPUT PARSING/////
@@ -311,9 +328,9 @@ public class CheckerSolver3 {
             Piece thisPiece = allPieces.get(i);
             if (thisPiece.y > p.y) {
                 rList.add(thisPiece);
-                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is including " + thisPiece.getGridPoint().desc());
+//                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is including " + thisPiece.getGridPoint().desc());
             } else {
-                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is EXCLUDING " + thisPiece.getGridPoint().desc());
+//                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is EXCLUDING " + thisPiece.getGridPoint().desc());
             }
         }
         return rList;
@@ -327,7 +344,7 @@ public class CheckerSolver3 {
             a = end;
             b = start;
         }
-        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
+//        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
 
         if (b.isToTheRightOf(a)) {
             if (b.y - a.y != b.x - a.x) {
@@ -373,15 +390,15 @@ class Piece {
     }
 
     public String getHashKey() {
-        return CheckerSolver3.getHashForPosition(this.x, this.y);
+        return Solution.getHashForPosition(this.x, this.y);
     }
 
 
     public boolean pieceExistsBehindLeft() {
-        return CheckerSolver3.PieceExistsAt(this.x-1, this.y+1);
+        return Solution.PieceExistsAt(this.x-1, this.y+1);
     }
     public boolean pieceExistsBehindRight() {
-        return CheckerSolver3.PieceExistsAt(this.x+1, this.y+1);
+        return Solution.PieceExistsAt(this.x+1, this.y+1);
     }
 
     public int getValue() {
@@ -396,52 +413,86 @@ class Piece {
 
     //Recursively get max path value by filtering to possible path candidates, filtering unreachable paths, then keeping max value of remaining paths
     //Depth First Search
-    public int getMaxPathValue(final boolean fromLeft) {
+    public int getMaxPathValue(final boolean goingLeft) {
+
+
+//        if (this.x == 3 && this.y == 3) {
+//            System.out.println();
+//        }
 
         //Get list of pieces we will try to path to
-        ArrayList<Piece> pathCandidates = CheckerSolver3.GetAllPiecesAfter(this);
+        ArrayList<Piece> pathCandidates = Solution.GetAllPiecesAfter(this);
 
         //Check reachable & not blocked behind & not path blocked
         pathCandidates.removeIf(new Predicate<Piece>() {
             @Override
             public boolean test(Piece otherPiece) {
 
-                if (fromLeft) {
-                    //Left not blocked & path exists from left
-                    if (!otherPiece.pieceExistsBehindLeft()) {
-                        GridPoint halfWayPoint = Piece.this.getPathHalfwayPoint(otherPiece, true);
+//                if (otherPiece.type == 'q') {
+//                    System.out.println("");
+//                }
 
-                        if (halfWayPoint == null) {
-                            return true;
-                        }
-                        CheckerSolver3.DebugPrint("LEFT half way pt between " + Piece.this.getGridPoint().desc() + " and " + otherPiece.getGridPoint().desc() + " is " + halfWayPoint.desc());
-                        if (CheckerSolver3.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint)) {
-                            return true;
-                        }
-                        if (CheckerSolver3.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
-                            return true;
-                        }
-                        return false;
+                if (goingLeft) {
+
+                    GridPoint halfWayPoint = Piece.this.getPathHalfwayPoint(otherPiece, true);
+
+                    if (halfWayPoint == null) {
+                        return true;
                     }
+                    Solution.DebugPrint("LEFT half way pt between " + Piece.this.getGridPoint().desc() + " and " + otherPiece.getGridPoint().desc() + " is " + halfWayPoint.desc());
+
+                    //If straight shot, check left side. Else check right
+                    if (halfWayPoint.isEqualTo(otherPiece.getGridPoint())) {
+                        if (otherPiece.pieceExistsBehindLeft()) {
+                            return true;
+                        }
+                    } else {
+                        if (otherPiece.pieceExistsBehindRight()) {
+                            return true;
+                        }
+                    }
+
+                    //Check for obstructions on the way
+                    if (Solution.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint)) {
+                        return true;
+                    }
+                    if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
+                        return true;
+                    }
+                    Solution.DebugPrint("     " + Piece.this.getGridPoint().desc() + " CAN reach " + otherPiece.getGridPoint().desc() + " going left");
+                    return false;
+
                 } else {
-                    //Right not blocked & path exists from right
-                    if (!otherPiece.pieceExistsBehindRight()) {
-                        GridPoint halfWayPoint = Piece.this.getPathHalfwayPoint(otherPiece, false);
 
-                        if (halfWayPoint == null) {
-                            return true;
-                        }
-                        CheckerSolver3.DebugPrint("RIGHT half way pt between " + Piece.this.getGridPoint().desc() + " and " + otherPiece.getGridPoint().desc() + " is " + halfWayPoint.desc());
-                        if (CheckerSolver3.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint)) {
-                            return true;
-                        }
-                        if (CheckerSolver3.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
-                            return true;
-                        }
-                        return false;
+                    GridPoint halfWayPoint = Piece.this.getPathHalfwayPoint(otherPiece, false);
+
+                    if (halfWayPoint == null) {
+                        return true;
                     }
+                    Solution.DebugPrint("RIGHT half way pt between " + Piece.this.getGridPoint().desc() + " and " + otherPiece.getGridPoint().desc() + " is " + halfWayPoint.desc());
+
+                    //If straight shot, check left side. Else check right
+                    if (halfWayPoint.isEqualTo(otherPiece.getGridPoint())) {
+                        if (otherPiece.pieceExistsBehindRight()) {
+                            return true;
+                        }
+                    } else {
+                        if (otherPiece.pieceExistsBehindLeft()) {
+                            return true;
+                        }
+                    }
+
+                    //Check for obstructions on the way
+                    if (Solution.PieceObstructsPath(Piece.this.getGridPoint(), halfWayPoint)) {
+                        return true;
+                    }
+                    if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
+                        return true;
+                    }
+                    Solution.DebugPrint("     " + Piece.this.getGridPoint().desc() + " CAN reach " + otherPiece.getGridPoint().desc() + " going right");
+                    return false;
+
                 }
-                return true;
             }
         });
 
@@ -451,11 +502,11 @@ class Piece {
         //Enumerate candidates to find the max path value
         for(Piece candidate : pathCandidates) {
             //add THIS path value here
-            int candidateMaxPathValue = candidate.getMaxPathValue(!fromLeft);
-            if (fromLeft) {
-                CheckerSolver3.DebugPrint("  Candidate " + candidate.getGridPoint().desc() + " has max val: " + candidateMaxPathValue + " from left");
+            int candidateMaxPathValue = candidate.getMaxPathValue(!goingLeft);
+            if (goingLeft) {
+                Solution.DebugPrint("  Candidate " + candidate.getGridPoint().desc() + " has max val: " + candidateMaxPathValue + " from left");
             } else {
-                CheckerSolver3.DebugPrint("  Candidate " + candidate.getGridPoint().desc() + " has max val: " + candidateMaxPathValue + " from right");
+                Solution.DebugPrint("  Candidate " + candidate.getGridPoint().desc() + " has max val: " + candidateMaxPathValue + " from right");
             }
 
             if (candidateMaxPathValue > maxPathValue) {
@@ -472,7 +523,7 @@ class Piece {
         int diffY = otherPiece.y - this.y;
 
         if (diffY < 0) {
-            CheckerSolver3.DebugPrint("Critical error in getPathHalfwayPoint() - otherPiece is BELOW this one!");
+            Solution.DebugPrint("Critical error in getPathHalfwayPoint() - otherPiece is BELOW this one!");
         }
 
         //If there is no path, return null
@@ -508,7 +559,7 @@ class Piece {
     public boolean validPathExistsTo(Piece otherPiece) {
         //Lateral or behind...
         if (otherPiece.y <= this.y) {
-            CheckerSolver3.DebugPrint("No valid path (a) exists from " + this.getGridPoint().desc() + " to " + otherPiece.getGridPoint().desc());
+            Solution.DebugPrint("No valid path (a) exists from " + this.getGridPoint().desc() + " to " + otherPiece.getGridPoint().desc());
             return false;
         }
 
@@ -519,7 +570,7 @@ class Piece {
 
         //remove if its outside the left or right bound of this piece
         if (Math.abs(otherPiece.x - this.x) > (otherPiece.y - this.y)) {
-            CheckerSolver3.DebugPrint("No valid path (b) exists from " + this.getGridPoint().desc() + " to " + otherPiece.getGridPoint().desc());
+            Solution.DebugPrint("No valid path (b) exists from " + this.getGridPoint().desc() + " to " + otherPiece.getGridPoint().desc());
             return false;
         }
 
@@ -544,10 +595,14 @@ class GridPoint {
     }
 
     public String desc() {
-        return CheckerSolver3.getHashForPosition(x, y);
+        return Solution.getHashForPosition(x, y);
     }
 
     public boolean isToTheRightOf(GridPoint otherPoint) {
         return this.x > otherPoint.x;
+    }
+
+    public boolean isEqualTo(GridPoint otherPt) {
+        return this.x == otherPt.x && this.y == otherPt.y;
     }
 }

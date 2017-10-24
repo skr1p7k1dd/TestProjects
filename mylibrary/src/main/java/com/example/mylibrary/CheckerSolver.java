@@ -16,18 +16,18 @@
 //        int[] X1    = {3, 5, 1, 6};
 //        int[] Y1    = {1, 3, 3, 8};
 //        String T1   = "Xpqp";
-//        System.out.println("ANSWER1 IS: " + Solve(X1, Y1, T1));
+//        System.out.println("ANSWER1 IS: " + solution(X1, Y1, T1));
 //
 //
 //
 //        int[] X2    = {0, 3, 5, 1, 6};
 //        int[] Y2    = {4, 1, 3, 3, 8};
 //        String T2   = "pXpqp";
-//        //System.out.println("ANSWER2 IS: " + Solve(X2, Y2, T2));
+//        //System.out.println("ANSWER2 IS: " + solution(X2, Y2, T2));
 //
 //    }
 //
-//    public static int Solve(int[] x, int[] y, String T) {
+//    public static int solution(int[] x, int[] y, String T) {
 //
 //        //Build pieces
 //        ArrayList<Piece> enemyPieces = new ArrayList<Piece>();

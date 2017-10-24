@@ -22,7 +22,7 @@ public class CheckerSolver2 {
 //        int[] X1    = {3, 5, 1, 6};
 //        int[] Y1    = {1, 3, 3, 8};
 //        String T1   = "Xpqp";
-//        int answer1 = Solve(X1, Y1, T1);
+//        int answer1 = solution(X1, Y1, T1);
 //        int expectedAnswer1 = 10;
 //        if (answer1 != expectedAnswer1) {
 //            System.out.println("ANSWER 1 IS: " + answer1 + " and it should be: " + expectedAnswer1);
@@ -31,7 +31,7 @@ public class CheckerSolver2 {
 //        int[] X2    = {0, 3, 5, 1, 6};
 //        int[] Y2    = {4, 1, 3, 3, 8};
 //        String T2   = "pXpqp";
-//        int answer2 = Solve(X2, Y2, T2);
+//        int answer2 = solution(X2, Y2, T2);
 //        int expectedAnswer2 = 2;
 //        if (answer2 != expectedAnswer2) {
 //            System.out.println("ANSWER 2 IS: " + answer2 + " and it should be: " + expectedAnswer2);
@@ -40,7 +40,7 @@ public class CheckerSolver2 {
 //        int[] X3    = {0, 6, 2, 5, 3, 0};
 //        int[] Y3    = {4, 8, 2, 3, 1, 6};
 //        String T3   = "ppqpXp";
-//        int answer3 = Solve(X3, Y3, T3);
+//        int answer3 = solution(X3, Y3, T3);
 //        int expectedAnswer3 = 12;
 //        if (answer3 != expectedAnswer3) {
 //            System.out.println("ANSWER 3 IS: " + answer3 + " and it should be: " + expectedAnswer3);
@@ -49,7 +49,7 @@ public class CheckerSolver2 {
 //        int[] X4    = {0, 1};
 //        int[] Y4    = {0, 1};
 //        String T4   = "Xp";
-//        int answer4 = Solve(X4, Y4, T4);
+//        int answer4 = solution(X4, Y4, T4);
 //        int expectedAnswer4 = 1;
 //        if (answer4 != expectedAnswer4) {
 //            System.out.println("Custom 4: " + answer4 + " and it should be: " + expectedAnswer4);
@@ -58,7 +58,7 @@ public class CheckerSolver2 {
 //        int[] X5    = {0, 1, 2};
 //        int[] Y5    = {0, 1, 2};
 //        String T5   = "Xpp";
-//        int answer5 =  Solve(X5, Y5, T5);
+//        int answer5 =  solution(X5, Y5, T5);
 //        int expectedAnswer5 = 0;
 //        if (answer5 != expectedAnswer5) {
 //            System.out.println("Custom 5: " + answer5 + " and it should be: " + expectedAnswer5);
@@ -67,7 +67,7 @@ public class CheckerSolver2 {
 //        int[] X6    = {0, 1, 3};
 //        int[] Y6    = {0, 1, 3};
 //        String T6   = "Xpp";
-//        int answer6 = Solve(X6, Y6, T6);
+//        int answer6 = solution(X6, Y6, T6);
 //        int expectedAnswer6 = 2;
 //        if (answer6 != expectedAnswer6) {
 //            System.out.println("Custom 6: " + answer6 + " and it should be: " + expectedAnswer6);
@@ -76,7 +76,7 @@ public class CheckerSolver2 {
 //        int[] X7    = {0, 1, 3, 4};
 //        int[] Y7    = {0, 1, 3, 4};
 //        String T7   = "Xppp";
-//        int answer7 = Solve(X7, Y7, T7);
+//        int answer7 = solution(X7, Y7, T7);
 //        int expectedAnswer7 = 1;
 //        if (answer7 != expectedAnswer7) {
 //            System.out.println("Custom 7: " + answer7 + " and it should be: " + expectedAnswer7);
@@ -85,7 +85,7 @@ public class CheckerSolver2 {
 //        int[] X8    = {0, 1, 3, 4, 0};
 //        int[] Y8    = {0, 1, 3, 4, 4};
 //        String T8   = "Xpppq";
-//        int answer8 = Solve(X8, Y8, T8);
+//        int answer8 = solution(X8, Y8, T8);
 //        int expectedAnswer8 = 11;
 //        if (answer8 != expectedAnswer8) {
 //            System.out.println("Custom 8: " + answer8 + " and it should be: " + expectedAnswer8);
@@ -103,7 +103,7 @@ public class CheckerSolver2 {
 //        int[] X10    = {0, 1, 3, 0};
 //        int[] Y10    = {0, 1, 3, 10};
 //        String T10   = "Xppq";
-//        int answer10 = Solve(X10, Y10, T10);
+//        int answer10 = solution(X10, Y10, T10);
 //        int expectedAnswer10 = 12;
 //        if (answer10 != expectedAnswer10) {
 //            System.out.println("Custom 10: " + answer10 + " and it should be: " + expectedAnswer10);
@@ -112,7 +112,7 @@ public class CheckerSolver2 {
 //        int[] X11    = {0, 1, 3, 1};
 //        int[] Y11    = {0, 1, 3, 10};
 //        String T11   = "Xppq";
-//        int answer11 = Solve(X11, Y11, T11);
+//        int answer11 = solution(X11, Y11, T11);
 //        int expectedAnswer11 = 2;
 //        if (answer11 != expectedAnswer11) {
 //            System.out.println("Custom 11: " + answer11 + " and it should be: " + expectedAnswer11);
@@ -121,7 +121,7 @@ public class CheckerSolver2 {
 //        int[] X12    = {0, 1, 2, 1};
 //        int[] Y12    = {0, 1, 2, 10};
 //        String T12   = "Xppq";
-//        int answer12 = Solve(X12, Y12, T12);
+//        int answer12 = solution(X12, Y12, T12);
 //        int expectedAnswer12 = 0;
 //        if (answer12 != expectedAnswer12) {
 //            System.out.println("Custom 12: " + answer12 + " and it should be: " + expectedAnswer12);
@@ -130,7 +130,7 @@ public class CheckerSolver2 {
 //        int[] X13    = {10, 12};
 //        int[] Y13    = {10, 10};
 //        String T13   = "Xp";
-//        int answer13 = Solve(X13, Y13, T13);
+//        int answer13 = solution(X13, Y13, T13);
 //        int expectedAnswer13 = 0;
 //        if (answer13 != expectedAnswer13) {
 //            System.out.println("Custom 13: " + answer13 + " and it should be: " + expectedAnswer13);
