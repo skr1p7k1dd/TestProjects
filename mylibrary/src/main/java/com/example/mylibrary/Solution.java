@@ -15,8 +15,8 @@ public class Solution {
     static ArrayList<Piece> allPieces = null;
     static Piece ourPiece = null;
 
-    static boolean DEBUG_MODE = true;
-//    static boolean DEBUG_MODE = false;
+//    static boolean DEBUG_MODE = true;
+    static boolean DEBUG_MODE = false;
 
     public static void main(String[] args) {
 
@@ -174,8 +174,17 @@ public class Solution {
         int expectedAnswer17 = 3;
         if (answer17 != expectedAnswer17) {
             System.out.println("Custom 17: " + answer17 + " and it should be: " + expectedAnswer17);
+        }
+
+        int[] X18    = {4,5,7,9,9,9,7,10};
+        int[] Y18    = {0,1,3,5,7,9,11,10};
+        String T18   = "Xpppppppppppppppppppppppppppppppppp";
+        int answer18 = solution(X18, Y18, T18);
+        int expectedAnswer18 = 5;
+        if (answer18 != expectedAnswer18) {
+            System.out.println("Custom 18: " + answer18 + " and it should be: " + expectedAnswer18);
         } else {
-            System.out.println("PASS!!!!");
+            System.out.println("Pass");
         }
 
         System.out.println("ALL TESTS FINISHED");
@@ -486,6 +495,12 @@ class Piece {
                     if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
                         return true;
                     }
+
+                    //Check to make sure its not immediately adjacent to this piece
+                    if (Piece.this.isImmediatelyAdjacentTo(otherPiece)) {
+                        return true;
+                    }
+
                     Solution.DebugPrint("     " + Piece.this.getGridPoint().desc() + " CAN reach " + otherPiece.getGridPoint().desc() + " going left");
                     return false;
 
@@ -516,6 +531,12 @@ class Piece {
                     if (Solution.PieceObstructsPath(halfWayPoint, otherPiece.getGridPoint())) {
                         return true;
                     }
+
+                    //Check to make sure its not immediately adjacent to this piece
+                    if (Piece.this.isImmediatelyAdjacentTo(otherPiece)) {
+                        return true;
+                    }
+
                     Solution.DebugPrint("     " + Piece.this.getGridPoint().desc() + " CAN reach " + otherPiece.getGridPoint().desc() + " going right");
                     return false;
 
@@ -604,6 +625,15 @@ class Piece {
         }
 
         return true;
+    }
+
+    public boolean isImmediatelyAdjacentTo(Piece otherPiece) {
+        if (this.y + 1 == otherPiece.y || this.y - 1 == otherPiece.y) {
+            if (this.x - 1 == otherPiece.x || this.x + 1 == otherPiece.x) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public GridPoint getGridPoint() {
