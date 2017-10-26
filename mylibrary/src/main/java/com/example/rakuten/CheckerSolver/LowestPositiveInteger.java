@@ -1,4 +1,4 @@
-package com.example.mylibrary;
+package com.example.rakuten.CheckerSolver;
 
 /**
  * Created by Alex on 10/22/2017.

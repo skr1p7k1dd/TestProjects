@@ -1,6 +1,5 @@
-package com.example.mylibrary;
+package com.example.rakuten.CheckerSolver;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -409,7 +408,7 @@ public class CheckerSolver2 {
                 else if (valToPrint.equalsIgnoreCase("14"))
                     valToPrint = "E";
                 else if (valToPrint.equalsIgnoreCase("-1"))
-                    valToPrint = ".";
+                    valToPrint = "";
 
 
                 System.out.print(valToPrint);
