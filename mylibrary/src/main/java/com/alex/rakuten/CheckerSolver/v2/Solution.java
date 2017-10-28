@@ -1,4 +1,4 @@
-package com.example.rakuten.CheckerSolver;
+package com.alex.rakuten.CheckerSolver.v2;
 
 import java.util.ArrayList;
 import java.util.Comparator;

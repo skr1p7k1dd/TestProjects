@@ -1,4 +1,4 @@
-package com.example.rakuten.CheckerSolver;
+package com.alex.rakuten.LowestPossibleInteger;
 
 /**
  * Created by Alex on 10/22/2017.

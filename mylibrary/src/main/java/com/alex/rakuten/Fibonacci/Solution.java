@@ -1,4 +1,4 @@
-package com.example.rakuten;
+package com.alex.rakuten.Fibonacci;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

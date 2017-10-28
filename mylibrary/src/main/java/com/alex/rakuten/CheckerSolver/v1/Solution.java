@@ -1,4 +1,4 @@
-package com.example.rakuten.CheckerSolver;
+package com.alex.rakuten.CheckerSolver.v1;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -7,7 +7,7 @@ import java.util.Comparator;
  * Created by Alex on 10/22/2017.
  */
 
-public class CheckerSolver2 {
+public class Solution {
 
     static char EMPTY_CHAR = '\u0000';
     static int UNREACHABLE = 0;
@@ -419,14 +419,14 @@ public class CheckerSolver2 {
     }
 }
 
-//class Piece {
-//    int x;
-//    int y;
-//    char type;
-//
-//    public Piece(int x, int y, char type) {
-//        this.x = x;
-//        this.y = y;
-//        this.type = type;
-//    }
-//}
+class Piece {
+    int x;
+    int y;
+    char type;
+
+    public Piece(int x, int y, char type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+    }
+}
