@@ -353,7 +353,7 @@ public class Solution {
 
         Piece p = allPiecesHashMap.get(getHashForPosition(x, y));
         boolean exists = p != null;
-//        DebugPrint("PieceExistsAt: " + x + "," + y + " = " + exists);
+        DebugPrint("PieceExistsAt: " + x + "," + y + " = " + exists);
         return exists;
     }
 
@@ -373,9 +373,9 @@ public class Solution {
             Piece thisPiece = allPieces.get(i);
             if (thisPiece.y > p.y) {
                 rList.add(thisPiece);
-//                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is including " + thisPiece.getGridPoint().desc());
+                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is including " + thisPiece.getGridPoint().desc());
             } else {
-//                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is EXCLUDING " + thisPiece.getGridPoint().desc());
+                DebugPrint("GetAllPiecesAfter " + p.getGridPoint().desc() + " is EXCLUDING " + thisPiece.getGridPoint().desc());
             }
         }
         return rList;
@@ -389,11 +389,11 @@ public class Solution {
             a = end;
             b = start;
         }
-//        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
+        DebugPrint(" Checking for obstruction between " + a.desc() + " and " + b.desc());
 
         if (b.isToTheRightOf(a)) {
             if (b.y - a.y != b.x - a.x) {
-//                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-a. No path between " + a.desc() + " and " + b.desc());
+                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-a. No path between " + a.desc() + " and " + b.desc());
                 return false;
             }
 
@@ -401,16 +401,16 @@ public class Solution {
 
                 Piece possibleExistingPiece = allPiecesHashMap.get(getHashForPosition(a.x + xi, a.y + xi));
                 if (possibleExistingPiece != null && possibleExistingPiece != pieceToIgnore) {
-//                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " OBSTRUCTION");
+                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " OBSTRUCTION");
                     return true;
                 } else {
-//                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " clear");
+                    DebugPrint("  Checking pt " + (a.x + xi) + " and " + (a.y + xi) + " clear");
                 }
             }
         } else {
 
             if (b.y - a.y != a.x - b.x) {
-//                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-b. No path between " + a.desc() + " and " + b.desc());
+                DebugPrint("CRITICAL ERROR IN PieceObstructsPath-b. No path between " + a.desc() + " and " + b.desc());
                 return false;
             }
 
@@ -418,14 +418,14 @@ public class Solution {
 
                 Piece possibleExistingPiece = allPiecesHashMap.get(getHashForPosition(a.x - xi, a.y + xi));
                 if (possibleExistingPiece != null && possibleExistingPiece != pieceToIgnore) {
-//                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " OBSTRUCTON");
+                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " OBSTRUCTON");
                     return true;
                 } else {
-//                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " clear");
+                    DebugPrint("  Checking pt " + (a.x - xi) + " and " + (a.y + xi) + " clear");
                 }
             }
         }
-        //DebugPrint(" No obstruction in path between " + start.desc() + " and " + end.desc());
+        DebugPrint(" No obstruction in path between " + start.desc() + " and " + end.desc());
         return false;
     }
 }
@@ -468,11 +468,6 @@ class Piece {
     //Depth First Search
     public int getMaxPathValue(final boolean goingLeft) {
 
-
-//        if (this.x == 5 && this.y == 3) {
-//            System.out.println();
-//        }
-
         //Get list of pieces we will try to path to
         ArrayList<Piece> pathCandidates = Solution.GetAllPiecesAfter(this);
 
@@ -480,10 +475,6 @@ class Piece {
         pathCandidates.removeIf(new Predicate<Piece>() {
             @Override
             public boolean test(Piece otherPiece) {
-
-//                if (otherPiece.type == 'q') {
-//                    System.out.println("");
-//                }
 
                 if (goingLeft) {
 

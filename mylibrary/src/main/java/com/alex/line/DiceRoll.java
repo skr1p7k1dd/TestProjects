@@ -56,7 +56,8 @@ public class DiceRoll {
             return;
         }
 
-        //0th state
+        //Initial move list
+        moveListContainer.clear();
         moveListContainer.add(new ArrayList<String>());
 
         //Prepopulate states with direct rolls

@@ -9,7 +9,11 @@ import java.util.ArrayList;
 public class BinaryTree {
 
     public static void main(String[] args) {
+        traverseTree(SimpleTestTree());
+    }
 
+    //Node depth is equal to value
+    public static Node SimpleTestTree() {
         Node level4a = new Node(4, null, null);
         Node level3a = new Node(3, level4a, null);
         Node level2a = new Node(2, level3a, null);
@@ -23,8 +27,7 @@ public class BinaryTree {
         Node level1b = new Node(1, level2b, level2b2);
 
         Node level0 = new Node(0, level1a, level1b);
-
-        traverseTree(level0);
+        return level0;
     }
 
     static ArrayList<Node> queue = new ArrayList<>();

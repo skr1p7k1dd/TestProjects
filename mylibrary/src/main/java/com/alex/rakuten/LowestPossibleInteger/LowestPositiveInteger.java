@@ -4,11 +4,7 @@ package com.alex.rakuten.LowestPossibleInteger;
  * Created by Alex on 10/22/2017.
  */
 
-// you can also use imports, for example:
 import java.util.*;
-
-// you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
 
 class LowestPositiveInteger {
 

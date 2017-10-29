@@ -10,9 +10,7 @@ import java.util.ArrayList;
 public class Solution {
 
     static BigInteger modVal = new BigInteger("1000000007");
-
     static ArrayList<BigInteger> storedValues = new ArrayList<>();
-
 
     public static void main(String[] args) {
 
@@ -36,24 +34,6 @@ public class Solution {
         long testVal6 = GF(3, 4, 5);
         System.out.println("testVal6 = " + testVal6);
 
-
-//        boolean keepGoing = true;
-//        for (int i = 0; i < Integer.MAX_VALUE && keepGoing; i++) {
-//
-//            if (i == 43) {
-//                System.out.println("");
-//            }
-//
-//            long customTestVal = GF(3, 4, i);
-//            System.out.println("N:" + i + " is " + customTestVal);
-//            if (customTestVal > Integer.MAX_VALUE || customTestVal < 0) {
-//                keepGoing = false;
-//            }
-//
-//            i = i * 2;
-//        }
-
-
         System.out.println("Test Complete");
     }
 
@@ -63,8 +43,6 @@ public class Solution {
         storedValues.clear();
         storedValues.add(new BigInteger(""+A));
         storedValues.add(new BigInteger(""+B));
-
-
 
         //Prepopulate values up to then
         for (int i = 0; i < N; i++) {

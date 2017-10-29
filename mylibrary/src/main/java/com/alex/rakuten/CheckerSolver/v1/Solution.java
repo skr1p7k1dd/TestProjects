@@ -7,6 +7,8 @@ import java.util.Comparator;
  * Created by Alex on 10/22/2017.
  */
 
+//NOTE: This approach is not functional so I have abandoned it.
+
 public class Solution {
 
     static char EMPTY_CHAR = '\u0000';
