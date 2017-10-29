@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class BinaryTree {
 
     public static void main(String[] args) {
-        traverseTree(SimpleTestTree());
+        TraverseTree(SimpleTestTree());
     }
 
     //Node depth is equal to value
@@ -32,7 +32,7 @@ public class BinaryTree {
 
     static ArrayList<Node> queue = new ArrayList<>();
 
-    static void traverseTree(Node root) {
+    static void TraverseTree(Node root) {
         queue.clear();
         queue.add(root);
 
